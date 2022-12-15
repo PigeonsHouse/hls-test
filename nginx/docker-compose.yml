@@ -1,0 +1,12 @@
+version: '3'
+services:
+  reverse-proxy:
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    image: nginx:latest
+    volumes:
+      - ./mount/:/etc/nginx
+      - ./mount/conf.d:/etc/nginx/conf.d
+      - ./mount/sites-enabled:/etc/nginx/sites-enabled
+    ports:
+      - "80:80"
